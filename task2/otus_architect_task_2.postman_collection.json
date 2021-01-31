@@ -8,9 +8,30 @@
 		{
 			"name": "create",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"userid\": \"\",  \r\n    \"name\": \"ivan\"    \r\n}   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://arch.homework/otusapp/dubinina/user",
+					"protocol": "http",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"dubinina",
+						"user"
+					]
+				}
 			},
 			"response": []
 		},
@@ -19,25 +40,71 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://arch.homework/otusapp/dubinina/user",
+					"protocol": "http",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"dubinina",
+						"user"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "update",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"userid\": \"2\",  \r\n    \"name\": \"petya_boss\"    \r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://arch.homework/otusapp/dubinina/user",
+					"protocol": "http",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"dubinina",
+						"user"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "delete",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://arch.homework/otusapp/dubinina/user/2",
+					"protocol": "http",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"dubinina",
+						"user",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
@@ -46,7 +113,20 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://arch.homework/otusapp/dubinina/user/2",
+					"protocol": "http",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"otusapp",
+						"dubinina",
+						"user",
+						"2"
+					]
+				}
 			},
 			"response": []
 		}
