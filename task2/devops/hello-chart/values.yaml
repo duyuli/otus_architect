@@ -41,14 +41,18 @@ service:
   port: 9000
 
 ingress:
-  enabled: false
-#  annotations: {}
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-#  hosts:
-#    - host: chart-example.local
-#      paths: []
-#  tls: []
+  hosts:
+    - host: arch.homework
+      paths:
+        - path: /otusapp/dubinina($|/)(.*)
+          pathType: Prefix
+
+  #  tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local

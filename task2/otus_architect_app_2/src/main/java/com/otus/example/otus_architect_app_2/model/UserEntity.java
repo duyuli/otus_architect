@@ -2,6 +2,7 @@ package com.otus.example.otus_architect_app_2.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +14,7 @@ public class UserEntity {
 
   //Defining user id as primary key
   @Id
-  @Column
+  @GeneratedValue
   private int userid;
   @Column
   private String name;
