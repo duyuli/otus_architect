@@ -7,3 +7,5 @@
 Выполнить  
 helm dependency update hello-chart  
 helm install hello-app hello-chart
+
+Postman коллекция лежит в той же папке, что и readme.md
