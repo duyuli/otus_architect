@@ -1,0 +1,635 @@
+{
+	"info": {
+		"_postman_id": "f0ae92d6-4f30-4000-91aa-0277e2aa7469",
+		"name": "otus_architect_task_5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get info unathorised",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register first user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"login\", pm.variables.replaceIn('{{$randomUserName}}'))\r",
+							"pm.collectionVariables.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"login\": \"{{login}}\",  \r\n    \"password\": \"{{password}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/register",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login first user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"login\": \"{{login}}\",  \r\n    \"password\": \"{{password}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/login",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info first user not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update info first user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"first_name\", pm.variables.replaceIn('{{$randomFirstName}}'))\r",
+							"pm.collectionVariables.set(\"last_name\", pm.variables.replaceIn('{{$randomLastName}}'))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"firstName\": \"{{first_name}}\",  \r\n    \"lastName\": \"{{last_name}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info first user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout first user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/logout",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info first user unathorised",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register second user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"login\", pm.variables.replaceIn('{{$randomUserName}}'))\r",
+							"pm.collectionVariables.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"login\": \"{{login}}\",  \r\n    \"password\": \"{{password}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/register",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login second user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"login\": \"{{login}}\",  \r\n    \"password\": \"{{password}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/login",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info second user not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update info second user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"first_name\", pm.variables.replaceIn('{{$randomFirstName}}'))\r",
+							"pm.collectionVariables.set(\"last_name\", pm.variables.replaceIn('{{$randomLastName}}'))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"firstName\": \"{{first_name}}\",  \r\n    \"lastName\": \"{{last_name}}\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get info second user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/users/me",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout second user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request headers: \" + JSON.stringify(pm.request.headers)] = true;\r",
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response headers: \" + JSON.stringify(pm.response.headers)] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.body] = true;\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/logout",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "arch.homework"
+		},
+		{
+			"key": "login",
+			"value": "Reyna6"
+		},
+		{
+			"key": "password",
+			"value": "VY6VMQQEYLEDyt4"
+		},
+		{
+			"key": "first_name",
+			"value": "Brianne"
+		},
+		{
+			"key": "last_name",
+			"value": "Zieme"
+		}
+	]
+}

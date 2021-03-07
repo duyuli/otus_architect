@@ -94,7 +94,8 @@ public class UserController {
   }
 
   @GetMapping(value = "/signin", produces = MediaType.APPLICATION_JSON_VALUE)
-  private String registerUser() {
-    return "{\"message\": \"Please go to login and provide Login/Password\"}";
+  private ResponseEntity signInUser() {
+    String body = "{\"message\": \"Please go to login and provide Login/Password\"}";
+    return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
   }
 }
