@@ -1,6 +1,6 @@
-package com.otus.example.otus_architect_task_5_app.repository;
+package com.otus.example.otus_architect_task_5_auth.repository;
 
-import com.otus.example.otus_architect_task_5_app.model.UserEntity;
+import com.otus.example.otus_architect_task_5_auth.model.UserEntity;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 

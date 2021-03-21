@@ -1,4 +1,4 @@
-package com.otus.example.otus_architect_task_5_app;
+package com.otus.example.otus_architect_task_5_auth;
 
 import java.io.File;
 import java.io.FileInputStream;

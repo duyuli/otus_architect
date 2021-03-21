@@ -1,7 +1,7 @@
-package com.otus.example.otus_architect_task_5_app.service;
+package com.otus.example.otus_architect_task_5_auth.service;
 
-import com.otus.example.otus_architect_task_5_app.model.UserEntity;
-import com.otus.example.otus_architect_task_5_app.repository.UserRepository;
+import com.otus.example.otus_architect_task_5_auth.model.UserEntity;
+import com.otus.example.otus_architect_task_5_auth.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

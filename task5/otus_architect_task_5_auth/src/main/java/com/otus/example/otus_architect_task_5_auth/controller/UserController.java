@@ -1,8 +1,8 @@
-package com.otus.example.otus_architect_task_5_app.controller;
+package com.otus.example.otus_architect_task_5_auth.controller;
 
-import com.otus.example.otus_architect_task_5_app.model.UserDTO;
-import com.otus.example.otus_architect_task_5_app.model.UserEntity;
-import com.otus.example.otus_architect_task_5_app.service.UserService;
+import com.otus.example.otus_architect_task_5_auth.model.UserDTO;
+import com.otus.example.otus_architect_task_5_auth.model.UserEntity;
+import com.otus.example.otus_architect_task_5_auth.service.UserService;
 import java.util.UUID;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;

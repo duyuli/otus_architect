@@ -1,4 +1,4 @@
-package com.otus.example.otus_architect_task_5_app.model;
+package com.otus.example.otus_architect_task_5_auth.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
