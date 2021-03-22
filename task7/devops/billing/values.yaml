@@ -88,4 +88,6 @@ postgresql:
   postgresqlPassword: passwd
   postgresqlDatabase: myapp
   service:
-    port: "5432"           
+    port: "5432"
+  persistence:
+    size: 256Mi

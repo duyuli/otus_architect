@@ -20,6 +20,12 @@ spec:
       labels:
         {{- include "order.selectorLabels" . | nindent 8 }}
     spec:
+      initContainers:
+        - name: check-db-ready
+          image: postgres:9.6.5
+          command: ['sh', '-c',
+                    {{ printf "'until pg_isready -h %s-postgresql -p %s; do echo waiting for database; sleep 2; done;'" (include "postgresql.fullname" .) .Values.postgresql.service.port }}
+          ]
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

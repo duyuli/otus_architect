@@ -1,0 +1,502 @@
+{
+	"info": {
+		"_postman_id": "61b9ad33-a98d-424c-8969-dda6a1ddaa40",
+		"name": "otus_architect_task_7_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"user_id\", pm.variables.replaceIn('{{$guid}}'))\r",
+							"pm.collectionVariables.set(\"username\", pm.variables.replaceIn('{{$randomUserName}}'))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"userId\": \"{{user_id}}\",  \r\n    \"username\": \"{{username}}\"   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/user/add",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/user/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deposit money",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"userId\": \"{{user_id}}\",  \r\n    \"amount\": 100   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/user/deposit",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users after deposit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/user/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create order success",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"success_order_id\", pm.variables.replaceIn('{{$guid}}'))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"userId\": \"{{user_id}}\",  \r\n    \"orderId\": \"{{success_order_id}}\",\r\n    \"price\": 1  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/order/create",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users after order success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/user/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get orders after order success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/order/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"order",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get notifications after order success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/notification/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notification",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create order declined",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"declined_order_id\", pm.variables.replaceIn('{{$guid}}'))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"userId\": \"{{user_id}}\",  \r\n    \"orderId\": \"{{declined_order_id}}\",\r\n    \"price\": 100  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/order/create",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users after order declined",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/user/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get orders after order declined",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/order/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"order",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get notifications after order declined",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"[INFO] Request body: \" + pm.request.body] = true;\r",
+							"tests[\"[INFO] Response body: \" + pm.response.text()] = true;\r",
+							"setTimeout(function(){}, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/notification/all",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"notification",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "arch.homework"
+		},
+		{
+			"key": "user_id\n",
+			"value": ""
+		},
+		{
+			"key": "success_order_id",
+			"value": ""
+		},
+		{
+			"key": "declined_order_id",
+			"value": ""
+		},
+		{
+			"key": "username",
+			"value": ""
+		}
+	]
+}
