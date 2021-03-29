@@ -1,11 +1,11 @@
-package com.otus.example.otus_architect_task_7_api_gateway.controller;
+package com.otus.example.otus_architect_task_8_api_gateway.controller;
 
-import com.otus.example.otus_architect_task_7_api_gateway.config.KafkaProperties;
-import com.otus.example.otus_architect_task_7_api_gateway.dto.OrderCreateDto;
-import com.otus.example.otus_architect_task_7_api_gateway.dto.UserCreateDto;
-import com.otus.example.otus_architect_task_7_api_gateway.dto.UserDepositDto;
-import com.otus.example.otus_architect_task_7_model.BillingEvent;
-import com.otus.example.otus_architect_task_7_model.OrderEvent;
+import com.otus.example.otus_architect_task_8_api_gateway.config.KafkaProperties;
+import com.otus.example.otus_architect_task_8_api_gateway.dto.OrderCreateDto;
+import com.otus.example.otus_architect_task_8_api_gateway.dto.UserCreateDto;
+import com.otus.example.otus_architect_task_8_api_gateway.dto.UserDepositDto;
+import com.otus.example.otus_architect_task_8_model.BillingEvent;
+import com.otus.example.otus_architect_task_8_model.OrderEvent;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.AllArgsConstructor;

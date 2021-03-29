@@ -1,10 +1,10 @@
-package com.otus.example.otus_architect_task_7_billing.listener;
+package com.otus.example.otus_architect_task_8_billing.listener;
 
-import com.otus.example.otus_architect_task_7_billing.config.KafkaProperties;
-import com.otus.example.otus_architect_task_7_billing.model.UserEntity;
-import com.otus.example.otus_architect_task_7_billing.service.UserService;
-import com.otus.example.otus_architect_task_7_model.BillingEvent;
-import com.otus.example.otus_architect_task_7_model.OrderEvent;
+import com.otus.example.otus_architect_task_8_billing.config.KafkaProperties;
+import com.otus.example.otus_architect_task_8_billing.model.UserEntity;
+import com.otus.example.otus_architect_task_8_billing.service.UserService;
+import com.otus.example.otus_architect_task_8_model.BillingEvent;
+import com.otus.example.otus_architect_task_8_model.OrderEvent;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
