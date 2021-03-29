@@ -1,4 +1,4 @@
-FROM maven:latest as builder
+FROM maven:3.6.3-jdk-8 as builder
 LABEL maintainer="Dubinina Yulia"
 RUN mkdir /app
 WORKDIR /app

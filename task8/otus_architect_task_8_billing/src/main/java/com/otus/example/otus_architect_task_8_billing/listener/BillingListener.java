@@ -35,6 +35,10 @@ public class BillingListener {
     BillingEvent payload = record.value();
     switch (payload.getCommand()) {
       case "create":
+        Optional<UserEntity> userById = userService.getById(payload.getUserId());
+        if (userById.isPresent()) {
+          log.info("Got duplicate create user request");
+        }
         UserEntity newUser = new UserEntity(payload.getUserId(),
             payload.getContext().get("username"),
             0);
@@ -47,6 +51,8 @@ public class BillingListener {
           userEntity.setBalance(
               userEntity.getBalance() + Integer.valueOf(payload.getContext().get("amount")));
           userService.saveOrUpdate(userEntity);
+        } else {
+          log.info("Got billing deposit request for non existing userId");
         }
         break;
       }
@@ -70,6 +76,8 @@ public class BillingListener {
           kakfaProducerOrder.send(kafkaProperties.getTopics().getOrder(),
               String.valueOf(orderEvent.getOrderId()), orderEvent);
 
+        } else {
+          log.info("Got billing process order request for non existing userId");
         }
 
         break;

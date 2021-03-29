@@ -38,19 +38,25 @@ public class OrderListener {
     OrderEvent payload = record.value();
     switch (payload.getCommand()) {
       case "create":
-        OrderEntity newOrder = new OrderEntity(payload.getOrderId(),
-            payload.getContext().get("userId"), Integer.valueOf(payload.getContext().get("price")),
-            "pending");
-        orderService.saveOrUpdate(newOrder);
+        Optional<OrderEntity> orderById = orderService.getById(payload.getOrderId());
+        if (orderById.isPresent()) {
+          log.info("Got duplicate create order event");
+        } else {
+          OrderEntity newOrder = new OrderEntity(payload.getOrderId(),
+              payload.getContext().get("userId"),
+              Integer.valueOf(payload.getContext().get("price")),
+              "pending");
+          orderService.saveOrUpdate(newOrder);
 
-        Map<String, String> context = new HashMap<>();
-        context.put("orderId", newOrder.getOrderId());
-        context.put("price", String.valueOf(newOrder.getPrice()));
-        BillingEvent billingEvent = new BillingEvent("pay",
-            newOrder.getUserId(), context);
-        log.info("Sending to kafka: " + billingEvent.toString());
-        kakfaProducerBilling.send(kafkaProperties.getTopics().getBilling(),
-            String.valueOf(newOrder.getUserId()), billingEvent);
+          Map<String, String> context = new HashMap<>();
+          context.put("orderId", newOrder.getOrderId());
+          context.put("price", String.valueOf(newOrder.getPrice()));
+          BillingEvent billingEvent = new BillingEvent("pay",
+              newOrder.getUserId(), context);
+          log.info("Sending to kafka: " + billingEvent.toString());
+          kakfaProducerBilling.send(kafkaProperties.getTopics().getBilling(),
+              String.valueOf(newOrder.getUserId()), billingEvent);
+        }
         break;
       case "processed": {
         Optional<OrderEntity> optional = orderService.getById(payload.getOrderId());
@@ -65,6 +71,8 @@ public class OrderListener {
           kakfaProducerNotification.send(kafkaProperties.getTopics().getNotification(),
               String.valueOf(orderEntity.getUserId()), notificationEvent);
 
+        }else{
+          log.info("Got order processed request for non existing orderID");
         }
         break;
       }
